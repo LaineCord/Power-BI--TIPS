@@ -1,0 +1,36 @@
+//CALENDÁRIO COMPLETO EM FORMATO NUMERICO SEM DIAS DE INICIO DEFINIDO
+
+d_Calendario = 
+ADDCOLUMNS(
+    CALENDARAUTO(),
+        "Ano",YEAR([Date]),
+        "Mês",MONTH([Date]),
+        "Dia", DAY([Date])
+        ) 
+
+
+//CALENDÁRIO DAX COM DATA DE INICIO DEFINIDA
+CalendarioDAX = 
+CALENDAR(DATE(2020,01,01),TODAY())
+
+
+//ADICIONAR COLUNA COM OS MESES ABREVIADOS EM FORMATO TEXTO
+
+NomeMes = FORMAT(d_Calendario[Mês], "MMM")
+ 
+OU 
+
+NomeMesABREVIADO = VAR d = d_Calendario[Date]
+return 
+FORMAT(d, "mmm")
+
+
+//MEDIDA PARA FILTRAR SOMENTE UM PERIODO DE ANOS OU MESES
+A medida pode ser utilizada em:
+- Cartões que precisam mudar mensalmente ou anualmente
+- Calendarios que precisam mostrar somente uma data definida no dahsboard.
+Ex: Somente os 2 ultimos anos SEMPRE.
+OBS:A medida deve ser adiciona como nova coluna em calendário DAX
+
+
+Filtro-Ano = DATEDIFF(TODAY(), d_Calendario[Date], YEAR)
