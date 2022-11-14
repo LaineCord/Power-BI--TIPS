@@ -1,0 +1,31 @@
+//CRIAR PLANILHA DE CALENDÁRIO NO "TRANSFORMAR DADOS"
+//Utilizando "Nova Consulta" - "Consulta Nula"
+OBS: Limite de 4 anos#
+= List.Dates(#date(2014,09,01), 3600, #duration(1,0,0,0))
+
+
+
+
+//UTILIZANDO O EDITOR AVANÇADO:
+-Para um calendario estatico
+
+let
+    DataInicial = #date(2020, 1, 1),
+    DataFinal = #date(2029, 12, 31)
+in
+    DataFinal
+
+
+OU
+
+-Para um calendario que altera de acordo com os dados adicionados
+
+DataInicial = Date.StartOfYear(List.Min (Vendas[Data])),
+DataFinal = Date.EndOfYear(List.Max(Vendas [Data])),
+QtdeDias = Duration.Days (DataFinal - DataInicial) +1, 
+ListaDatas = List.Dates (DataInicial, QtdeDias, #duration ())
+
+in
+
+ListaDatas
+
