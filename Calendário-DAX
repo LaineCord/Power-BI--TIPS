@@ -1,5 +1,7 @@
 //CALENDÁRIO COMPLETO EM FORMATO NUMERICO SEM DIAS DE INICIO DEFINIDO
 
+
+Clicar em : Ferramentas da Tabela - "Nova Tabela": 
 d_Calendario = 
 ADDCOLUMNS(
     CALENDARAUTO(),
