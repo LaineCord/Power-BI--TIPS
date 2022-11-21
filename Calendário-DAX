@@ -13,6 +13,12 @@ ADDCOLUMNS(
 CalendarioDAX = 
 CALENDAR(DATE(2020,01,01),TODAY())
 
+//Dia, Mês e Ano por coluna
+
+Mês = MONTH([Date])
+Dia = DAY([Date])
+Ano = YEAR([Date]) 
+
 
 //ADICIONAR COLUNA COM OS MESES ABREVIADOS EM FORMATO TEXTO
 
