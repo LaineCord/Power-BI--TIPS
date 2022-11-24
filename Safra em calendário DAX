@@ -1,0 +1,48 @@
+- Pagina Inicial - Nova tabela - 
+
+
+// Calendário automático. Necessário escolher o ano de inicio e de finalização.
+calendario = CALENDAR(DATE(2019,01,01), TODAY())
+
+//Coluna Com os Dias.
+Dia = DAY([Date])
+
+
+//Coluna com os meses.
+Mês = MONTH([Date])
+
+//Coluna com os anos.
+Ano = YEAR([Date]) 
+
+//Coluna com os meses em formato de TEXTO e simplificado.
+NomeMes = FORMAT(calendario[Date], "MMM")
+
+
+//2 Últimos caracteres do ANO.
+Ano-simplificado = RIGHT(calendario[Ano],2)
+
+
+
+//Váriavel para acrescentar a SAFRA no calendário.
+- Variaveis para anos da medida criada.
+var = 
+var s1 = calendario[Ano-simplificado] 
+var s2 = calendario[Ano-simplificado] + 1
+var s3 = calendario[Ano-simplificado] -1
+
+- Variaveis para separar os meses do primeiro ano e do segundo ano de uma Safra.
+var mes1 = calendario[Mês] IN {9, 10, 11, 12}
+var mes2 = calendario[Mês] IN {1, 2, 3, 4,5,6,7,8}
+
+
+- Variaveis para juntas os anos e textos(opcional) simplificados e transforma-los em Safra.
+var sf6 =  s1 &"/"& s2
+var sf7 =  s3 &"/"& s1
+var sf8 = "Sfa"& "" & s3 &"/"& s1
+
+
+return
+IF(mes1, sf6,
+IF(mes2,sf7
+)
+)
