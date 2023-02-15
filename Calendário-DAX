@@ -15,6 +15,17 @@ ADDCOLUMNS(
 CalendarioDAX = 
 CALENDAR(DATE(2020,01,01),TODAY())
 
+
+//CALENDÁRIO CONTANDO DATA DE INICIO E FIM DE UMA TABELA ESPECIFICA
+d_calendario = 
+var minn = MIN(f_Plano_Trabalho[Start da atividade])
+var mmax = MAX(f_Plano_Trabalho[Start da atividade])
+
+return
+CALENDAR(minn, mmax)
+
+
+
 //Dia, Mês e Ano por coluna
 
 Mês = MONTH([Date])
