@@ -1,0 +1,10 @@
+#cRIAR A FUNÇÃO ABAIXO PARA ACESSO A API COM TOKEN
+
+(page as text)=>
+let
+    Fonte = Json.Document(Web.Contents("urldaAPI?page="&page,
+    
+     [Headers=
+     [Authorization="Bearer CODIGO TOKEN"]]))
+in
+Fonte
