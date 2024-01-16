@@ -1,10 +1,28 @@
-#cRIAR A FUNÇÃO ABAIXO PARA ACESSO A API COM TOKEN
+#CRIAR A FUNÇÃO ABAIXO PARA ACESSO A API COM TOKEN
 
-(page as text)=>
+(page as text) =>
+
+
 let
-    Fonte = Json.Document(Web.Contents("urldaAPI?page="&page,
-    
-     [Headers=
-     [Authorization="Bearer CODIGO TOKEN"]]))
+urlBase = "API URL",
+endPoint = "endpoint?&page="&page,
+cabecalho =
+    [
+        Authorization = "Bearer CODIGO TOKEN "
+    ],
+
+Fonte = 
+     Web.Contents(
+                urlBase,
+    [
+        
+        RelativePath = endPoint,
+        Headers = cabecalho
+        
+           
+    ]
+    ),
+
+abrirJson = Json.Document(Fonte)
 in
-Fonte
+    abrirJson
