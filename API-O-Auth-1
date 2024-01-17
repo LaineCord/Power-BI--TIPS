@@ -6,15 +6,15 @@
 let
 cabecalho =
     [
-        Authorization = "Bearer HO114brIkbSk41xBNS6qhWCeM0wY7nSxLram0XfWrvFJ2b2prajJWa69WT5f85U0Afuvvj74WMu8agWlt2Vklicu5TG5el0sGnzEKEI5I1IguPW6vAW8wEeQLJRH9JnX"
+        Authorization = "Bearer token aqui"
     ],
 
 Fonte = Json.Document(
      Web.Contents(
-                "https://api-analytics.checklistfacil.com.br/",
+                "Url da API aqui",
     [
         Headers =  cabecalho,
-        RelativePath = "/v1/units/regions?page="&Text.From(Page)
+        RelativePath = "endpointAQUI?page="&Text.From(Page)
         
            
     ]
