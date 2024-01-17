@@ -1,0 +1,24 @@
+#CRIAR A FUNÇÃO ABAIXO PARA ACESSO A API COM TOKEN
+
+(Page as text) =>
+
+
+let
+cabecalho =
+    [
+        Authorization = "Bearer HO114brIkbSk41xBNS6qhWCeM0wY7nSxLram0XfWrvFJ2b2prajJWa69WT5f85U0Afuvvj74WMu8agWlt2Vklicu5TG5el0sGnzEKEI5I1IguPW6vAW8wEeQLJRH9JnX"
+    ],
+
+Fonte = Json.Document(
+     Web.Contents(
+                "https://api-analytics.checklistfacil.com.br/",
+    [
+        Headers =  cabecalho,
+        RelativePath = "/v1/units/regions?page="&Text.From(Page)
+        
+           
+    ]
+     ))
+ 
+in
+Fonte
