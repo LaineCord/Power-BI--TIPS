@@ -1,0 +1,29 @@
+BASE_URL = 'URL da API aqui'
+token = 'numero token aqui'
+headers = {'Authorization': "Bearer {}".format(token)}
+
+#parâmetro para adicionar paginação
+parametro =  'pagina'
+pagina = 0 
+
+
+
+
+while True:
+    api_url = f"{BASE_URL}?{parametro}={pagina}"
+
+    requisicao = requests.get(api_url, headers = headers, timeout=5)
+
+#Comando para visualizar os dados
+    dados = requisicao.json()
+
+# regra para verificar se a página esta vazia
+    if len(dados)  ==0: 
+        break
+
+    print(dados)
+    print ("*"*50)
+
+#Para não executar de maneira infinita o while na mesma pagina, ao final de cada laço sera adicionado um item.Dessa forma, o codigo irá
+#ler a proxima pagina para seguir a regra acima criada até chega a página 0   
+    pagina += 1
